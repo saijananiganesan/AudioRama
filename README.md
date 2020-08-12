@@ -1,8 +1,8 @@
 # AudioRama
-An audio book recommendation engine for Audible users.
+An audio book recommendation engine for Audible and audiobook users.
 
 ## Project objective 
-- `1.` Develop a recommendation engine for audio books, exclusively for Audible listeners.
+- `1.` Develop a recommendation engine for audiobooks based on data from Audible and LibriVox.
 
 ## List of files and directories:
 - `data` list of raw files
