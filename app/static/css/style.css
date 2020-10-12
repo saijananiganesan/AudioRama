@@ -1,0 +1,23 @@
+body {
+     margin: 5px;
+     background: url('https://raw.githubusercontent.com/saijananiganesan/LDAPathwayPrediction/master/images/pathways.png');     background-size: 1440px 800px;     background-repeat:no-repeat;    display: compact;     font: 13px/18px "Helvetica Neue", Helvetica, Arial, sans-serif; 
+     opacity=0.1;
+}
+
+.logo {
+  background-color: #0D122B;
+  padding: 25px;
+  color: white;
+}
+
+.logo1 {
+  background-color: #0D122B;
+  padding: 5px;
+  color: white;
+}
+
+
+html,h1,h2,h3,h4,h5,h6,a{
+        font-family: "Arial";
+}
+
