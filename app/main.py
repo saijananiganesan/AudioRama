@@ -1,9 +1,6 @@
 from flask import Flask, flash, render_template, request, url_for, redirect
 import jinja2
 import os,sys
-from Model import Model
-from Validation import Validation
-from Results import TestSample
 import matplotlib.pyplot as plt
 import pandas as pd
 pd.set_option('mode.chained_assignment', None)
@@ -44,8 +41,25 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 @app.route("/")
+@app.route("/home/")
 def home():
     return render_template("home.html")
+
+@app.route("/about/")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact/")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/exp1/")
+def exp1():
+    return render_template("exp1.html")
+
+@app.route("/exp2/")
+def exp2():
+    return render_template("exp2.html")
 
 @app.route("/application/")
 def application():
@@ -53,11 +67,6 @@ def application():
         return render_template("application.html")
     else:
         return "<h1>Please fill your details to proceed.</h1>"
-
-@app.route("/Result/")
-def Result():
-    return render_template("CheckResults.html")
-
 
 @app.route('/form/', methods=['GET', 'POST'])
 def form():
