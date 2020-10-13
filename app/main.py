@@ -68,6 +68,32 @@ def application():
     else:
         return "<h1>Please fill your details to proceed.</h1>"
 
+@app.route('/exp1/info/')
+@app.route('/info/')
+def info():
+    return render_template('final_summary_set_cathist.html')
+
+@app.route('/exp1/nar/')
+@app.route('/nar/')
+def nar():
+    return render_template('final_summary_set_narhist.html')
+
+@app.route('/exp1/narcat/')
+@app.route('/narcat/')
+def narcat():
+    return render_template('final_summary_set_narcathist.html')
+
+@app.route('/exp1/catclus/')
+@app.route('/catclus/')
+def catclus():
+    return render_template('final_summary_set_cat.html')
+
+@app.route('/exp1/narclus/')
+@app.route('/narclus/')
+def narclus():
+    return render_template('final_summary_set_nar.html')
+
+
 @app.route('/form/', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':

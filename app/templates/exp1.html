@@ -19,13 +19,49 @@
         opacity=0.5;
     }
 
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button2 {
+        background-color: #008CBA;
+    }
+
+    /* Blue */
+    .button3 {
+        background-color: #f44336;
+    }
+
+    /* Red */
+    .button4 {
+        background-color: #e7e7e7;
+        color: black;
+    }
+
+    /* Gray */
+    .button5 {
+        background-color: #555555;
+    }
+
+    /* Black */
+
 
     .btn-primary,
     .btn-primary:hover,
     .btn-primary:active,
     .btn-primary:visited {
         color: #212529;
-        background-color: black;
+        background-color: #e47911;
         border-color: #e47911 font-color:white;
     }
 
@@ -82,6 +118,43 @@
         padding: $spacer-y $spacer-x !important;
     }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#b1").click(function() {
+            $("#div1").load("/info");
+            $(this).hide();
+        });
+    });
+
+    $(document).ready(function() {
+        $("#b2").click(function() {
+            $("#div2").load("/nar");
+            $(this).hide();
+        });
+    });
+
+    $(document).ready(function() {
+        $("#b3").click(function() {
+            $("#div3").load("/narcat");
+            $(this).hide();
+        });
+    });
+
+    $(document).ready(function() {
+        $("#b4").click(function() {
+            $("#div4").load("/catclus");
+            $(this).hide();
+        });
+    });
+
+    $(document).ready(function() {
+        $("#b5").click(function() {
+            $("#div5").load("/narclus");
+            $(this).hide();
+        });
+    });
+    </script>
 </head>
 
 <body>
@@ -95,7 +168,7 @@
                     <li><a href="/form/" style="font-size: 20px !important;">Use Application</a></li>
                     <li class="active"><a href="/exp1/" style="font-size: 20px !important;">Explore AudioRama's Database</a></li>
                     <li><a href="/exp2/" style="font-size: 20px !important;">Explore Audible's User Data</a></li>
-                    <li ><a href="/contact/" style="font-size: 20px !important;">Contact</a></li>
+                    <li><a href="/contact/" style="font-size: 20px !important;">Contact</a></li>
                 </ul>
         </div>
         </nav>
@@ -103,11 +176,46 @@
     </header>
     <div class="container-fluid">
         <div class="card border-primary mb-3" style="border-color: solid black; margin-top:0px">
-            <div class="card-body" style="background-color: white; height: 31rem; margin-right: 0px; margin-left: px;">
-
+            <div class="card-body" style="background-color: white; height: 300rem; margin-right: 0px; margin-left: px;">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 align='center'>Know where your recommendations come from!</h2>
+                        <div id="div1">
+                            <h4 align='left'> <b><u>Explore AudioBook categories</u></b></h4>
+                            <p class='lead'>AudioRama's database consists of 110,000 audiobooks. These audiobooks span 23 different categories and 176 sub-categories. To explore the distribution of categories, please click the button below. </p>
+                        </div>
+                        <button id='b1' class="button button5 ">Explore Categories</button>
+                        <hr size="2" width="80%">
+                        <div id="div2">
+                            <h4 align='left'> <b><u>Explore Narrators</u></b></h4>
+                            <p class='lead'>The database consists of audiobooks narrations from 26,698 distinct narrators and 45,919 distinct authors. This author-narrator ratio (2:1) can be attributed to multiple narrators contributing to books in multiple categories, as you will see later on in this page.To explore the distribution of narrators, please click the button below. </p>
+                        </div>
+                        <button id='b2' class="button button5">Explore Narrators</button>
+                        <hr size="2" width="80%">
+                        <div id="div3">
+                            <h4 align='left'> <b><u>Explore Narrator-Category Combinations</u></b></h4>
+                            <p class='lead'>
+                                The database consists of 54,963 distinct narrators-category pairs. Some narrators are popular in multiple categories, an example is <a href='https://www.audible.com/search?searchNarrator=Joel+Leslie'> Joel Leslie</a>, who is a popular narrator in categories ranging from romance to mysteries. To explore the distribution of top narrator-category pairs, please click the button below. </p>
+                        </div>
+                        <button id='b3' class="button button5">Explore Narrator Combinations</button>
+                        <hr size="2" width="80%">
+                        <div id="div4">
+                            <h4 align='left'> <b><u>Explore Category Clusters</u></b></h4>
+                            <p class='lead'>
+                                One of the initial steps in building our recommendation engine is to convert a representative book vector (with relevant key words) into a <a href='https://en.wikipedia.org/wiki/Word_embedding'> high dimensional embedding </a> using a pre-trained <a href='https://nlp.stanford.edu/projects/glove/'>Glove model</a>. Please refer to the <a href='/about'>about section</a> for more details. We can look at key dimensions of books in different categories by a <a href='https://en.wikipedia.org/wiki/Dimensionality_reduction#:~:text=Dimensionality%20reduction%2C%20or%20dimension%20reduction,close%20to%20its%20intrinsic%20dimension.'> dimensionality reduction</a> method called <a href='https://umap-learn.readthedocs.io/en/latest/'> uniform manifold approximation and projection or UMAP</a>. To explore different category clusters, please click the button below. <b> Notice how local order is preserved within all but one category.</b> </p>
+                        </div>
+                        <button id='b4' class="button button5">Explore Category Clusters</button>
+                        <hr size="2" width="80%">
+                        <div id="div5">
+                            <h4 align='left'> <b><u>Explore Narrator Clusters</u></b></h4>
+                            <p class='lead'>
+                                Similarly, we can explore clusters of books written by top narrators. In these clusters, you will <b>not observe local order</b> as one narrator can contribute to multiple different genres/categories of books. However, there are some exceptions, like the pink cluster that corresponds to <a href='https://www.audible.com/search?ref=a_search_l1_catBackAll&pf_rd_p=daf0f1c8-2865-4989-87fb-15115ba5a6d2&pf_rd_r=3S9CF9E6ZDS1CET6Y2ZQ&searchNarrator=Dave+Wright'> Dave Wright</a>. Dave Wright is a popular non-fiction narrator and most of the books in this particular cluster are books related to health and wellness, hence the local order. To explore different narrator clusters, please click the button below.</p>
+                        </div>
+                        <button id='b5' class="button button5">Explore Narrator Clusters</button>
+                        <hr size="2" width="80%">
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 </body>
 <footer>
     <div class="container-fluid">
