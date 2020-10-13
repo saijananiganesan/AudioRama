@@ -93,6 +93,11 @@ def catclus():
 def narclus():
     return render_template('final_summary_set_nar.html')
 
+@app.route('/exp2/usr/')
+@app.route('/usr/')
+def usr():
+    return render_template('users.html')
+
 
 @app.route('/form/', methods=['GET', 'POST'])
 def form():

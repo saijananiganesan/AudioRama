@@ -45,6 +45,39 @@
     .container.custom-container {
         padding: 0 100px;
     }
+   .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button2 {
+        background-color: #008CBA;
+    }
+
+    /* Blue */
+    .button3 {
+        background-color: #f44336;
+    }
+
+    /* Red */
+    .button4 {
+        background-color: #e7e7e7;
+        color: black;
+    }
+
+    /* Gray */
+    .button5 {
+        background-color: #555555;
+    }
 
 
     html,
@@ -82,6 +115,16 @@
         padding: $spacer-y $spacer-x !important;
     }
     </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#b1").click(function() {
+            $("#div1").load("/usr");
+            $(this).hide();
+        });
+    });
+</script>
 </head>
 
 <body>
@@ -103,7 +146,15 @@
     </header>
     <div class="container-fluid">
         <div class="card border-primary mb-3" style="border-color: solid black; margin-top:0px">
-            <div class="card-body" style="background-color: white; height: 31rem; margin-right: 0px; margin-left: px;">
+            <div class="card-body" style="background-color: white; height: 100rem; margin-right: 0px; margin-left: px;">
+
+                        <div id="div1">
+                            <h4 align='center'> <b><u>Explore Relationships Between Books</u></b></h4>
+                            <p class='lead'>AudioRama's database represents about ~30% of Audible's database. From a user's profile on Audible, we can extract books that said user has reviewed favorably. For this analysis, we only consider reviews that have a 4 star rating on the "performance" metric of the audiobook. If two books are reviewed favorably by a user, we can hypothesize that they share a relationship. This relationship can be represented as an edge in a graph with the books being nodes. To explore this book relationship graph, please click the button below. <b>The size of the node is proportional to the degree of the node. Notice that the nodes that share centers have edges or connections to similar books.Look for clusters of non-fiction and science-fiction books.</b> </p>
+                        </div>
+                        <button id='b1' class="button button5 ">Explore User Graph</button>
+                        <hr size="2" width="80%">
+
 
             </div>
         </div>
