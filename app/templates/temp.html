@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <title>AudioRama Landing Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
     body {
         margin: 5px;
@@ -82,17 +81,39 @@
         padding: $spacer-y $spacer-x !important;
     }
     </style>
+<script type="text/javascript">
+                function Write_Table(list_to_write){
+                var mytable = "<div class='bs-example' class='text-center'> <table class='table table-bordered' style='border-color':#003366;> <thead> <tr>";
+                for (var i = 0; i < list_to_write[0].length; i++) {
+                mytable += "<th align='center' class='text-center'>" + list_to_write[0][i] + "</th>";
+                }
+                mytable += "</tr></thead><tr>";
+                
+                for (var j=1;j<list_to_write.length;j++) {
+                for (var i=0; i<list_to_write[j].length; i++) {
+                mytable += "<td align='center'><div>" + list_to_write[j][i] + "</div></td>";
+                }
+                mytable += "</tr><tr>";
+                
+                }
+                mytable += "</tr></table></div>";
+                document.write(mytable);
+                }
+</script>
+
+
 </head>
 
 <body>
     <header>
         <div class="container-fluid">
-            <h1 class='logo1' align='center' class='text-center'><a href={{ url_for('home') }}> AudioRama </a></h1>
+            <h1 class='logo1' align='center' class='text-center'><a href='/home/'> AudioRama </a></h1>
             <nav class="navbar navbar-inverse">
                 <ul class="nav navbar-nav">
-                    <li class="active" style="font-size: 20px !important;"><a href="#">Home</a></li>
-                    <li><a href="/about/" style="font-size: 20px !important;">About</a></li>
-                    <li><a href="/application/" style="font-size: 20px !important;">Use Application</a></li>
+                    <li style="font-size: 20px !important;"><a href="/home/">Home</a></li>
+                    <li ><a href="/about/" style="font-size: 20px !important;">About</a></li>   
+                    <li class="active"><a href="/form/" style="font-size: 20px !important;">Use Application</a></li>
+
                     <li><a href="/exp1/" style="font-size: 20px !important;">Explore AudioRama's Database</a></li>
                     <li><a href="/exp2/" style="font-size: 20px !important;">Explore Audible's User Data</a></li>
                     <li><a href="/form/" style="font-size: 20px !important;">Feedback Form</a></li>
@@ -105,17 +126,17 @@
     </header>
     <div class="container-fluid">
         <div class="card border-primary mb-3" style="border-color: solid black; margin-top:0px">
-            <div class="card-body" style="background-color: white; height: 41rem; margin-right: 0px; margin-left: px;">
+            <div class="card-body" style="background-color: white; height: 81rem; margin-right: 0px; margin-left: px;">
                 <div class="container">
                     <div class="card border" style="border-color: solid black; margin-top:20px">
-                        <div class="card-body" style="background-color: white; height: 40rem;">
-                            <p class='lead' style="margin-left:1em; margin-right:1em; margin-bottoms:1em; text-align: justify;"> AudioRama is an audiobook recommendation application designed and developed for<a href='https://www.audible.com/'> Audible</a> listeners and subscribers, <b>to help users discover new books by discovering new narrators</b>. Current Audible users get a more holistic set of recommendations built using a wide variety of information. This includes information ranging from a user's profile to current popular books on the website. However, if you are particularly interested in discovering new narrators, you would have to look through your list of 50-odd recommendations to find a new narrator you might enjoy. </p>
-                            <p class='lead' style="margin-left:1em; margin-right:1em; text-align: justify;">
-                                If you are a listener who listens to books purely for the narration experience; and is interested in finding new phenomenal narrators in genres that you are interested in, <a href='/home'>AudioRama is for you</a>. AudioRama will help you discover new books by idenitfying and recommending new, highly ranked and favored narrators. This is a tool to supplement Audible's recommendations.
-                            </p>
-                            <p class='lead' style="margin-left:1em; margin-right:1em; text-align: justify;">
-                                To use the application, navigate to the <a href='/application'> use application page</a>, to learn more about the underlying model and benchmarks, visit the <a href='/about'>about page</a>. You can also explore <a href='/exp1'>AudioRama's database</a>, and <a href='/exp2'>Audible's user profile</a>. Interested in helping us improve this application?--<a href='/form'>leave us your feedback and comments.</a> 
-                            </p>
+                        <div class="card-body" style="background-color: white; height: 80rem;">
+                        <h2 align='center'>Your next audiobook is on this page!</h2>
+                        <p class='lead' align='center'> The book you submitted is: {{book_name}} </p>
+                        <p class='lead'>Here's a list of your top ten recommendations: </p>
+                        <script type="text/javascript">
+                        var input_list={{results_table}};    
+                        Write_Table(list_to_write=input_list)
+                        </script>
                         </div>
                     </div>
                 </div>

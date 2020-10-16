@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>AudioRama Landing Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+    body {
+        margin: 5px;
+        background: url('https://raw.githubusercontent.com/saijananiganesan/AudioRama/app/app/static/wc1.png');
+        background-size: 1440px 800px;
+
+        background-repeat: no-repeat;
+        display: compact;
+        font: 13px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        opacity=0.5;
+    }
+
+
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited {
+        color: #212529;
+        background-color: black;
+        border-color: #e47911 font-color:white;
+    }
+
+    .logo {
+        background-color: #e47911;
+        padding: 25px;
+        color: white;
+    }
+
+    .logo1 {
+        background-color: #e47911;
+        padding: 25px;
+
+        color: white;
+    }
+
+    .container.custom-container {
+        padding: 0 100px;
+    }
+
+
+    html,
+    h1,
+    h2,
+    h4,
+    h5,
+    h6,
+    a {
+        font-family: "Arial";
+        color: black;
+
+    }
+
+    h3 {
+        font-family: "Arial";
+        color: white;
+
+    }
+
+    .mt-0 {
+        margin-top: 20 !important;
+    }
+
+    .ml-1 {
+        margin-left: ($spacer-x * .25) !important;
+    }
+
+    .px-2 {
+        padding-left: ($spacer-x * .5) !important;
+        padding-right: ($spacer-x * .5) !important;
+    }
+
+    .p-3 {
+        padding: $spacer-y $spacer-x !important;
+    }
+    </style>
+<script type="text/javascript">
+                function Write_Table(list_to_write){
+                var mytable = "<div class='bs-example' class='text-center'> <table class='table table-bordered' style='border-color':#003366;> <thead> <tr>";
+                for (var i = 0; i < list_to_write[0].length; i++) {
+                mytable += "<th align='center' class='text-center'>" + list_to_write[0][i] + "</th>";
+                }
+                mytable += "</tr></thead><tr>";
+                
+                for (var j=1;j<list_to_write.length;j++) {
+                for (var i=0; i<list_to_write[j].length; i++) {
+                mytable += "<td align='center'><div>" + list_to_write[j][i] + "</div></td>";
+                }
+                mytable += "</tr><tr>";
+                
+                }
+                mytable += "</tr></table></div>";
+                document.write(mytable);
+                }
+</script>
+
+
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <h1 class='logo1' align='center' class='text-center'><a href='/home/'> AudioRama </a></h1>
+            <nav class="navbar navbar-inverse">
+                <ul class="nav navbar-nav">
+                    <li style="font-size: 20px !important;"><a href="/home/">Home</a></li>
+                    <li ><a href="/about/" style="font-size: 20px !important;">About</a></li>   
+                    <li class="active"><a href="/form/" style="font-size: 20px !important;">Use Application</a></li>
+
+                    <li><a href="/exp1/" style="font-size: 20px !important;">Explore AudioRama's Database</a></li>
+                    <li><a href="/exp2/" style="font-size: 20px !important;">Explore Audible's User Data</a></li>
+                    <li><a href="/form/" style="font-size: 20px !important;">Feedback Form</a></li>
+                    <li><a href="/contact/" style="font-size: 20px !important;">Contact</a></li>
+
+                </ul>
+        </div>
+        </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="card border-primary mb-3" style="border-color: solid black; margin-top:0px">
+            <div class="card-body" style="background-color: white; height: 81rem; margin-right: 0px; margin-left: px;">
+                <div class="container">
+                    <div class="card border" style="border-color: solid black; margin-top:20px">
+                        <div class="card-body" style="background-color: white; height: 80rem;">
+                        <h2 align='center'>Your next audiobook is on this page!</h2>
+                        <p class='lead' align='center'> The book you submitted is: Joy at Work </p>
+                        <p class='lead'>Here's a list of your top ten recommendations: </p>
+                        <script type="text/javascript">
+                        var input_list=[['Book Name', 'Author Name', 'Narrator Name', 'Book Link'], ['Emotional Intelligence for Self-Discipline', 'Daniel Hollins', 'Marcus Mulenga', 'https://www.audible.com/pd/Emotional-Intelligence-for-Self-Discipline-Audiobook/B07Y5MPCSX'], ['Think Smart Not Hard', 'Roy Huff', 'Mike Norgaard', 'https://www.audible.com/pd/Think-Smart-Not-Hard-Audiobook/B076TCMH94'], ['Kaizen', 'Greg Caldwell', 'KC Wayman', 'https://www.audible.com/pd/Kaizen-Audiobook/B085LRZB97'], ['Do Nothing', 'Celeste Headlee', 'Celeste Headlee', 'https://www.audible.com/pd/Do-Nothing-Audiobook/0593164768'], ['Hiding in the Bathroom', 'Morra Aarons-Mele', 'Coleen Marlo', 'https://www.audible.com/pd/Hiding-in-the-Bathroom-Audiobook/B073ZL3RY3'], ['Feng Shui and Decluttering: 2 Manuscripts', 'Sabrina Godwin', 'Tiana Hanson', 'https://www.audible.com/pd/Feng-Shui-and-Decluttering-2-Manuscripts-Audiobook/B07L3CBCKQ'], ['Psychology of Human Behavior', 'Avery Wright', 'Jacob Buchholz,Michael W. Rahhal', 'https://www.audible.com/pd/Psychology-of-Human-Behavior-Audiobook/B08546D1ND'], ['Digital Minimalism', 'Cal Newport', 'Will Damron,Cal Newport', 'https://www.audible.com/pd/Digital-Minimalism-Audiobook/B07LGF8TCJ'], ['Declutter Your Mind: Simple and Effective Ways to Relieve Anxiety, Eliminate Negative Thoughts and Fear', 'Howard Wells', 'Russell Newton', 'https://www.audible.com/pd/Declutter-Your-Mind-Simple-and-Effective-Ways-to-Relieve-Anxiety-Eliminate-Negative-Thoughts-and-Fear-Audiobook/B07QFH1HZK'], ['Productivity for Authors: Find Time to Write, Organize Your Author Life, and Decide What Really Matters', 'Joanna Penn', 'Joanna Penn', 'https://www.audible.com/pd/Productivity-for-Authors-Find-Time-to-Write-Organize-Your-Author-Life-and-Decide-What-Really-Matters-Audiobook/B081SVVTX4']];    
+                        Write_Table(list_to_write=input_list)
+                        </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="container-fluid">
+        <p class="logo1" align='center' class='text-center' style="border: none; margin-top: 10px; margin-right: 0px; margin-left: 0px;">&copy; Copyright 2020, Sai J. Ganesan (ganesans@salilab.org)</p>
+    </div>
+</footer>
+
+</html>

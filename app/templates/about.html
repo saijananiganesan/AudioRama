@@ -92,10 +92,11 @@
                 <ul class="nav navbar-nav">
                     <li style="font-size: 20px !important;"><a href="/home/">Home</a></li>
                     <li class="active"><a href="/about/" style="font-size: 20px !important;">About</a></li>
-                    <li><a href="/form/" style="font-size: 20px !important;">Use Application</a></li>
+                    <li><a href="/application/" style="font-size: 20px !important;">Use Application</a></li>
                     <li><a href="/exp1/" style="font-size: 20px !important;">Explore AudioRama's Database</a></li>
                     <li><a href="/exp2/" style="font-size: 20px !important;">Explore Audible's User Data</a></li>
-                    <li ><a href="/contact/" style="font-size: 20px !important;">Contact</a></li>
+                    <li><a href="/form/" style="font-size: 20px !important;">Feedback Form</a></li>
+                    <li><a href="/contact/" style="font-size: 20px !important;">Contact</a></li>
                 </ul>
         </div>
         </nav>
@@ -103,8 +104,62 @@
     </header>
     <div class="container-fluid">
         <div class="card border-primary mb-3" style="border-color: solid black; margin-top:0px">
-            <div class="card-body" style="background-color: white; height: 31rem; margin-right: 0px; margin-left: px;">
+            <div class="card-body" style="background-color: white; height: 200rem; margin-right: 0px; margin-left: px;">
+                <div class="container">
+                    <div class="card border" style="border-color: solid black; margin-top:20px">
+                        <div class="card-body" style="background-color: white; height: 200rem;">
+                            <p class='lead'>AudioRama is a BERT based audiobook recommendation engine that <b> explicitly accounts for popular narrators</b> to give users a narrator-centric set of recommendations.</p>
+                            <p class='lead'> The underlying model behind this application is described below: </p>
+                            <ul>
+                                <li class='lead'><b>Data</b>: Three gigabytes of audiobook data were extracted/mined from Audible's webpages. These include information about
+                                book summary, narrator and author names, genre and sub genres, average ratings, total number of reviews, runtime, user profiles and top 50 reviews for each book.</li>
+                               <li class='lead'> <b>Representation</b>: Every book is represented as a vector of words. These words are gathered from all features ranging from book summary to author names. The word vector is subsequently converted to a numeric vector (word embeddings) using the Glove model (to get an initial baseline on accuracy) and BERT. Connections and correlations between different books are obtained from user profiles mined from Audibe. These book connections are represented as a graph, where each book is represented as a node. Two books are connected by an edge if more than one user has favorably reviewed both the books. </li>
+                                
+                                <li class='lead'><b>Scoring</b>: Recommendations are based on top scoring database entries for a given query (or book). AudioRama uses a weighted scoring function that has two components. The first component is a <b>cosine similarity score</b> betweeen the query and the database entries. The second component is a <b> probabilistic narrator score extracted from narrator-favorable reviews</b>. This probabilistic score will be assigned to each entry in the database. The combined scoring function is a weighted combination of its two components, with weights as hyperparameters. Hyperparameters are chosen to optimize accuracy. </li>
+                                
+                                <p class='lead'> The scoring function (F) can be written as: </p>
+                                                    <div class="container">
+                    <div class="card border" style="border-color: solid black; margin-top:20px">
+                        <div class="card-body" style="background-color: white; height: 10rem;">
 
+                                <img src="../static/EQ1.png" alt="EQ1" width="95%" height="50%" /> 
+
+                            </div>
+                        </div>
+                    </div>
+                        <p class='lead'> In this first equation, alpha and beta are the weights, x is the query, I corresponds to entry in the database,Sim(x,I) refers to cosine similarity.  </p>
+
+                        <p class='lead'><b>I<sub>narrator</sub></b> is the narrator score and is obtained using the equation below: </p>
+                        <div class="container">
+                        <div class="card border" style="border-color: solid black; margin-top:20px">
+                        <div class="card-body" style="background-color: white; height: 10rem;">
+
+                                <img class="center" src="../static/EQ2.png" alt="EQ2"  width="50%" height="75%" /> 
+
+                            </div>
+                        </div>
+                    </div>
+                        <p class='lead'> In this second equation, P<sub>sc</sub> is a positive sentiment score and can range between 0 and +1, N<sub>sc</sub> is a negative sentiment score and can range between -1 and 0, N<sub>num</sub> is the number of times either the word <i>narrator</i> or the <i>narrator's name</i> is mentioned in the review.</p>
+
+                        <li class='lead'><b>Validation </b>: To validate recommendations, we used infromation extracted about user reviews from Audible. If two books are reviewed favorably by more than one user, we can hypothesize that they share a relationship. This relationship can be represented as an edge in a graph with the books being nodes. We then check if any of the top 10 recommendations is a neighbor (or shares an edge) to the book node that is queried. If it is, it is considered to be a true positive hit and used in accuracy calculation. Refer to the <a href="/exp2/"> user data page </a> form more details. </li>
+
+
+                        <p class='lead'><b>Shown below are initial results with our baseline similarity model. This model uses Stanford's Glove model and is purely a similarity based model. This model does not account for narrator.</p>
+                        <div class="container">
+                        <div class="card border" style="border-color: solid black; margin-top:20px">
+                        <div class="card-body" style="background-color: white; height: 50rem;">
+
+                                <img class="center" src="../static/acc.png" alt="EQ2"   /> 
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

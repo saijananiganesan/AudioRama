@@ -91,10 +91,13 @@
                 <ul class="nav navbar-nav">
                     <li style="font-size: 20px !important;"><a href="/home/">Home</a></li>
                     <li><a href="/about/" style="font-size: 20px !important;">About</a></li>
-                    <li class="active"><a href="/form/" style="font-size: 20px !important;">Use Application</a></li>
+                    <li><a href="/application/" style="font-size: 20px !important;">Use Application</a></li>
                     <li><a href="/exp1/" style="font-size: 20px !important;">Explore AudioRama's Database</a></li>
                     <li><a href="/exp2/" style="font-size: 20px !important;">Explore Audible's User Data</a></li>
+                    <li class="active"><a href="/form/" style="font-size: 20px !important;">Feedback Form
+                    </a></li>
                     <li><a href="/contact/" style="font-size: 20px !important;">Contact</a></li>
+
                 </ul>
         </div>
         </nav>
@@ -102,25 +105,44 @@
     </header>
     <div class="container-fluid">
         <div class="card border-primary mb-3" style="border-color: solid black; margin-top:0px">
-            <div class="card-body" style="background-color: white; height: 35rem; margin-right: 0px; margin-left: px;">
-                <h3 class="font-weight-light" align='center'>User form</h3>
-                <p class='lead' style="margin-left:1em; margin-right:1em; text-align: center;"> Please login to use the application. </p>
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <label for="exampleInputName1">
-                            <h4>Name</h4>
-                        </label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="Name" value="{{request.form.name}}">
+            <div class="card-body" style="background-color: white; height: 75rem; margin-right: 0px; margin-left: px;">
+                <div class="container">
+                    <div class="card border" style="border-color: solid black; margin-top:20px">
+                        <div class="card-body" style="background-color: white; height: 30rem;">
+                            <h3 class="font-weight-light" align='center'>User form</h3>
+                            <p class='lead' style="margin-left:1em; margin-right:1em; text-align: center;"> Please fill out the feedback form to help us improve your experience. </p>
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">
+                                        <h4>Name</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="Name" value="{{request.form.name}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">
+                                        <h4>Email address</h4>
+                                    </label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="Email" value="{{request.form.email}}">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="useful">
+                                        <h4>Did you find the application useful?</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="useful" aria-describedby="emailHelp" placeholder="YES or NO" name="useful" value="{{request.form.useful}}">
+                                    <small id="emailHelp" class="form-text text-muted">Just a Yes or No.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">
+                                        <h4>Feedback</h4>
+                                    </label>
+                                    <textarea type="text" class="form-control" id="subject" placeholder="Write something.." name="subject" value="{{request.form.subject}}" style="height:200px"></textarea>
+                                </div>
+                                <input type="submit" class="btn-primary btn" value="Submit">
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">
-                            <h4>Email address</h4>
-                        </label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="Email" value="{{request.form.email}}">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <input type="submit" class="btn-primary btn" value="Login">
-                </form>
+                </div>
             </div>
         </div>
     </div>

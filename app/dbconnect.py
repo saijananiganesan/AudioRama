@@ -22,10 +22,20 @@ def create_login_table():
     date=datetime.datetime.fromtimestamp(time.time()).strftime('%m/%d/%Y')
     return date,c,conn
 
+def create_feedback_table():
+    conn = sqlite3.connect('user_database.db')
+    c=conn.cursor()
+    print ("Opened database successfully")
+    c.execute('CREATE TABLE IF NOT EXISTS feedback (date TEXT, login TEXT, email TEXT, useful TEXT, subject TEXT)')
+    date=datetime.datetime.fromtimestamp(time.time()).strftime('%m/%d/%Y')
+    return date,c,conn
+
+
 def read_from_db():
-    c.execute('SELECT * FROM login')
+    c.execute('SELECT * FROM feedback')
     data=c.fetchall()
     print (data)
 
+#create_feedback_table()
 #conn.close()
 read_from_db()
