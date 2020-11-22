@@ -11,6 +11,7 @@ import gensim
 import pickle
 from gensim.parsing.preprocessing import stem,strip_numeric,strip_punctuation,strip_short
 from gensim.parsing.preprocessing import remove_stopwords
+from gensim.models.keyedvectors import KeyedVectors
 import gensim.downloader as api
 import networkx as nx
 import numpy as np
@@ -125,6 +126,35 @@ def application():
         summary=get_summary_data(book_link)
         text1=clean_summary_text(' '.join(summary).replace('\xa0','').replace('\xad',''))
         text2=list(set((strip_short(strip_punctuation(strip_numeric(remove_stopwords(text1))))).split()))
+        glove_model = KeyedVectors.load('data/word2vec.model')
+        text3=[i for i in text2 if i in glove_model.vocab]
+        query=np.mean(glove_model[text3],axis=0)
+        final_df=pd.read_pickle("data/final_summary_meanvec1.pkl")
+        final_df.head()
+        final_df['comparison']=final_df['mean_vector'].apply(cosine_sim,query=query) 
+        final_df['Book_Link']=final_df['Book Link'].apply(bookL)
+        final_df=final_df[~final_df['Book Name'].isin([book_name])]
+        final=final_df.sort_values('comparison',ascending=False).iloc[:15,:][['Book Name','Author Names','Narrator Names','Book_Link']]
+        final_print=final.drop_duplicates().iloc[1:11,:].values.tolist()
+        final_print.insert(0,['Book Name','Author Name','Narrator Name','Book Link'])
+        Template_Dict={}
+        Template_Dict['book_name']=book_name
+        Template_Dict['results_table']=final_print
+        write_html(Template_Dict,"temp.html","Results.html")
+        print ("written template")
+        return redirect(url_for('Results'))
+
+
+    return render_template("application.html")
+
+'''
+def application():
+    if request.method=='POST':
+        book_link=request.form['list']
+        book_name=' '.join(book_link.split('/')[4].split('-')[:-1])
+        summary=get_summary_data(book_link)
+        text1=clean_summary_text(' '.join(summary).replace('\xa0','').replace('\xad',''))
+        text2=list(set((strip_short(strip_punctuation(strip_numeric(remove_stopwords(text1))))).split()))
         glove_model = api.load("glove-wiki-gigaword-300")
         text3=[i for i in text2 if i in glove_model.vocab]
         query=np.mean(glove_model[text3],axis=0)
@@ -144,6 +174,8 @@ def application():
 
 
     return render_template("application.html")
+
+'''
 
 @app.route('/exp1/info/')
 @app.route('/info/')
